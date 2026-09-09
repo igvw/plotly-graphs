@@ -5,7 +5,7 @@ import math
 import colorsys
 from utils import translate
 import worldbank
-import norway_migration
+import Norway_migrants
 
 def minimal_scatter(df, html_path=None, hover_data=None, hover_name=None):
     fig = px.scatter(
@@ -123,7 +123,7 @@ def norway_migration_sunburst(language='no'):
         look at the index in the location_categories list out the df accesses
     '''
     # some additional data prep and translation
-    df = norway_migration.melted()
+    df = Norway_migrants.melted()
     df.rename(columns=lambda col: translate(col, language))
     cols = list(df.columns)
     location_categories = list(cols[:-1])

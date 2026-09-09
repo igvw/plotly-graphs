@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import functools
+import colorsys
 
 def cache():
     """Decorator to cache function results as CSV files."""
@@ -55,3 +56,10 @@ def translate(key, language='no'):
     
 def eng2no(key):
     translate(language='no')
+
+def hsv_to_hex(h, s=0.7, v=0.7):
+    """Convert HSV values to HEX."""
+    if h < 0:
+        h += 1
+    rgb = colorsys.hsv_to_rgb(h, s, v)  # Normalize H to [0,1]
+    return f"#{int(rgb[0] * 255):02x}{int(rgb[1] * 255):02x}{int(rgb[2] * 255):02x}"
